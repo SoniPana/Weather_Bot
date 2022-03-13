@@ -29,7 +29,7 @@ url = 'https://www.jma.go.jp/bosai/forecast/#area_type=class20s&area_code=082010
 url_text = requests.get(url)
 soup = BeautifulSoup(url_text.text, 'html.parser')
 print(soup)
-table = soup.findAll("table", {"class":"forecast-table"})[0]
+table = soup.findAll("script")[5]
 li = table.findAll("tr")
 print(li)
 li = [i.strip() for i in li.text.splitlines()]
