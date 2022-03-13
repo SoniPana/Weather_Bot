@@ -9,4 +9,4 @@ CK = os.environ.get("CONSUMER_KEY") # 環境変数の値をCKに代入
 CS = os.environ.get("CONSUMER_SECRET")
 AT = os.environ.get("ACCESS_TOKEN")
 ATC = os.environ.get("ACCESS_TOKEN_SECRET")
-MU = os.environ.get("M1_URL")
+LN = os.environ.get("LINE_NOTIFY")
