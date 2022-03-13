@@ -28,7 +28,8 @@ api = tweepy.API(auth)
 url = 'https://www.jma.go.jp/bosai/forecast/#area_type=class20s&area_code=0820100'
 url_text = requests.get(url)
 soup = BeautifulSoup(url_text.text, 'html.parser')
-li = soup.find(class_='forecast-area')
+table = soup.findAll("table", {"class":"forecast-table"})[0]
+li = table.findAll("tr")
 print(li)
 li = [i.strip() for i in li.text.splitlines()]
 li = [i for i in li if i != ""]
