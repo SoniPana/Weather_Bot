@@ -25,10 +25,11 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 #-----------------------------------------------------------------------------
 #Yahoo天気から取得(文字列)
-url = 'https://weather.yahoo.co.jp/weather/jp/8/4010.html'
+url = 'https://www.jma.go.jp/bosai/forecast/#area_type=class20s&area_code=0820100'
 url_text = requests.get(url)
 soup = BeautifulSoup(url_text.text, 'html.parser')
-li = soup.find(class_='forecastCity')
+li = soup.find(class_='forecast-table')
+print(li)
 li = [i.strip() for i in li.text.splitlines()]
 li = [i for i in li if i != ""]
 
@@ -80,4 +81,4 @@ im = Image.open('image.png')
 im.crop((0, 330, 640, 550)).save('weather.png', quality=95)
 #-----------------------------------------------------------------------------
 #画像付きツイート
-api.update_status_with_media(status = 'おはようございます。\n今日の水戸の天気は' + li[1] + '。\n最高気温は' + li[2] + '、最低気温は' + li[3] + 'です。\n\nFrom Yahoo天気', filename = 'weather.png')
+#api.update_status_with_media(status = 'おはようございます。\n今日の水戸の天気は' + li[1] + '。\n最高気温は' + li[2] + '、最低気温は' + li[3] + 'です。\n\nFrom Yahoo天気', filename = 'weather.png')
