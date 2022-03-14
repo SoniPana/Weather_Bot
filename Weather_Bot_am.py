@@ -28,7 +28,7 @@ api = tweepy.API(auth)
 url = 'https://weather.yahoo.co.jp/weather/jp/8/4010.html'
 url_text = requests.get(url)
 soup = BeautifulSoup(url_text.text, 'html.parser')
-li = soup.find(class_='contents-wide-table-body')
+li = soup.find(class_='forecast-sentence')
 li = [i.strip() for i in li.text.splitlines()]
 li = [i for i in li if i != ""]
 
