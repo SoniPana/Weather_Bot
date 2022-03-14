@@ -3,7 +3,6 @@ import requests
 import tweepy
 import time
 from PIL import Image
-from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -24,15 +23,6 @@ auth.set_access_token(access_token, access_token_secret)
 # tweepyの設定(APIインスタンスの作成)
 api = tweepy.API(auth)
 #-----------------------------------------------------------------------------
-#Yahoo天気から取得(文字列)
-url = 'https://weather.yahoo.co.jp/weather/jp/8/4010.html'
-url_text = requests.get(url)
-soup = BeautifulSoup(url_text.text, 'html.parser')
-li = soup.find(class_='forecast-sentence')
-li = [i.strip() for i in li.text.splitlines()]
-li = [i for i in li if i != ""]
-
-
 #Yahoo天気から取得(画像)
 # Chromeヘッドレスモード起動
 options = webdriver.ChromeOptions()
@@ -55,6 +45,7 @@ windowSizeHeight = 600
 folderPath = fileNamePrefix
 
 # サイトURL取得
+url = 'https://www.jma.go.jp/bosai/forecast/#area_type=class20s&area_code=0820100'
 driver.get(url)
 WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
   
@@ -76,8 +67,9 @@ time.sleep(1)
 driver.quit()
 
 # 画像トリミング
-im = Image.open('image.png')
-im.crop((0, 330, 640, 550)).save('weather.png', quality=95)
+#im = Image.open('image.png')
+#im.crop((0, 330, 640, 550)).save('weather.png', quality=95)
 #-----------------------------------------------------------------------------
 #画像付きツイート
-#api.update_status_with_media(status = 'おはようございます。\n今日の水戸の天気は' + li[1] + '。\n最高気温は' + li[2] + '、最低気温は' + li[3] + 'です。\n\nFrom Yahoo天気', filename = 'weather.png')
+api.update_status_with_media(status = 'てすと。。\n\nFrom 気象庁', filename = 'image.png')
+#api.update_status_with_media(status = 'おはようございます。 今日、明日の天気です。。\n\nFrom 気象庁', filename = 'weather.png')
