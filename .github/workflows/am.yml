@@ -23,6 +23,7 @@ jobs:
       - run: |
           python -m pip install --upgrade pip
           pip install get-chrome-driver --upgrade
+          sudo apt-get -y install fonts-ipafont-gothic
           sudo apt-get -y install fonts-ipafont-mincho
           pip install python-dotenv
           pip install selenium
