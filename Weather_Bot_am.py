@@ -67,9 +67,9 @@ time.sleep(1)
 driver.quit()
 
 # 画像トリミング
-#im = Image.open('image.png')
-#im.crop((0, 330, 640, 550)).save('weather.png', quality=95)
+im = Image.open('image.png')
+im.crop((50, 150, 1150, 850)).save('weather.png', quality=95)
 #-----------------------------------------------------------------------------
 #画像付きツイート
-api.update_status_with_media(status = 'てすと。。\n\nFrom 気象庁', filename = 'image.png')
+api.update_status_with_media(status = 'てすと\n\nFrom 気象庁', filename = 'weather.png')
 #api.update_status_with_media(status = 'おはようございます。 今日、明日の天気です。。\n\nFrom 気象庁', filename = 'weather.png')
