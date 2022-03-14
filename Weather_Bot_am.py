@@ -25,13 +25,10 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 #-----------------------------------------------------------------------------
 #Yahoo天気から取得(文字列)
-url = 'https://www.jma.go.jp/bosai/forecast/#area_type=class20s&area_code=0820100'
+url = 'https://weather.yahoo.co.jp/weather/jp/8/4010.html'
 url_text = requests.get(url)
 soup = BeautifulSoup(url_text.text, 'html.parser')
-print(soup)
-table = soup.findAll("script")[5]
-li = table.findAll("tr")
-print(li)
+li = soup.find(class_='contents-wide-table-body')
 li = [i.strip() for i in li.text.splitlines()]
 li = [i for i in li if i != ""]
 
