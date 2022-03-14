@@ -68,7 +68,7 @@ driver.quit()
 
 # 画像トリミング
 im = Image.open('image.png')
-im.crop((20, 50, 1000, 550)).save('weather.png', quality=95)
+im.crop((20, 120, 800, 400)).save('weather.png', quality=95)
 #-----------------------------------------------------------------------------
 #画像付きツイート
 api.update_status_with_media(status = 'てすと\n\nFrom 気象庁', filename = 'weather.png')
