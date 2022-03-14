@@ -36,7 +36,7 @@ driver.implicitly_wait(10)
 fileNamePrefix = 'image'
 
 # ウインドウ幅指定
-windowSizeWidth = 800
+windowSizeWidth = 1200
 
 # ウインドウ高さ指定
 windowSizeHeight = 600
