@@ -37,10 +37,10 @@ driver.implicitly_wait(10)
 fileNamePrefix = 'image'
 
 # ウインドウ幅指定
-windowSizeWidth = 800
+windowSizeWidth = 1200
 
 # ウインドウ高さ指定
-windowSizeHeight = 600
+windowSizeHeight = 850
 
 # パス指定
 folderPath = fileNamePrefix
@@ -69,7 +69,7 @@ driver.quit()
 
 # 画像トリミング
 im = Image.open('image.png')
-im.crop((320, 100, 840, 460)).save('weather.png', quality=95)
+im.crop((520, 100, 840, 460)).save('weather.png', quality=95)
 #-----------------------------------------------------------------------------
 #画像付きツイート
 api.update_status_with_media(status = '今日もお疲れ様でした。明日の天気です。\n\nFrom 気象庁', filename = 'weather.png')
