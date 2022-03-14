@@ -24,16 +24,7 @@ auth.set_access_token(access_token, access_token_secret)
 # tweepyの設定(APIインスタンスの作成)
 api = tweepy.API(auth)
 #-----------------------------------------------------------------------------
-#Yahoo天気から取得(文字列)
-url = 'https://weather.yahoo.co.jp/weather/jp/8/4010.html'
-url_text = requests.get(url)
-soup = BeautifulSoup(url_text.text, 'html.parser')
-li = soup.find(class_='forecastCity')
-li = [i.strip() for i in li.text.splitlines()]
-li = [i for i in li if i != ""]
-
-
-#Yahoo天気から取得(画像)
+#気象庁から画像取得
 # Chromeヘッドレスモード起動
 options = webdriver.ChromeOptions()
 options.headless = True
@@ -55,6 +46,7 @@ windowSizeHeight = 600
 folderPath = fileNamePrefix
 
 # サイトURL取得
+url = 'https://www.jma.go.jp/bosai/forecast/#area_type=class20s&area_code=0820100'
 driver.get(url)
 WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
   
@@ -77,7 +69,7 @@ driver.quit()
 
 # 画像トリミング
 im = Image.open('image.png')
-im.crop((310, 330, 640, 550)).save('weather.png', quality=95)
+im.crop((520, 100, 840, 460)).save('weather.png', quality=95)
 #-----------------------------------------------------------------------------
 #画像付きツイート
-api.update_status_with_media(status = '今日もお疲れ様でした。\n明日の水戸の天気は' + li[19] + '。\n最高気温は' + li[20] + '、最低気温は' + li[21] + 'です。\n\nFrom Yahoo天気', filename = 'weather.png')
+api.update_status_with_media(status = '今日もお疲れ様でした。明日の天気です。\n\nFrom 気象庁', filename = 'weather.png')
