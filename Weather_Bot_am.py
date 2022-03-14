@@ -23,7 +23,7 @@ auth.set_access_token(access_token, access_token_secret)
 # tweepyの設定(APIインスタンスの作成)
 api = tweepy.API(auth)
 #-----------------------------------------------------------------------------
-#Yahoo天気から取得(画像)
+#気象庁から画像取得
 # Chromeヘッドレスモード起動
 options = webdriver.ChromeOptions()
 options.headless = True
@@ -71,5 +71,4 @@ im = Image.open('image.png')
 im.crop((20, 100, 850, 460)).save('weather.png', quality=95)
 #-----------------------------------------------------------------------------
 #画像付きツイート
-api.update_status_with_media(status = 'てすと\n\nFrom 気象庁', filename = 'weather.png')
-#api.update_status_with_media(status = 'おはようございます。 今日、明日の天気です。。\n\nFrom 気象庁', filename = 'weather.png')
+api.update_status_with_media(status = 'おはようございます。 今日、明日の天気です。。\n\nFrom 気象庁', filename = 'weather.png')
