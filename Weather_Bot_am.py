@@ -71,7 +71,7 @@ im = Image.open('image.png')
 im.crop((20, 100, 850, 480)).save('weather.png', quality=95)
 
 #画像確認(デバッグ)
-im = image.open('weather.png')
+im = Image.open('weather.png')
 im.show()
 #-----------------------------------------------------------------------------
 #画像付きツイート
