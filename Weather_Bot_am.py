@@ -71,5 +71,4 @@ im = Image.open('image.png')
 im.crop((20, 100, 840, 520)).save('weather.png', quality=95)
 #-----------------------------------------------------------------------------
 #画像付きツイート
-api.update_status_with_media(status = 'てすと。 今日、明日の天気です。\n\nFrom 気象庁', filename = 'weather.png')
-#api.update_status_with_media(status = 'おはようございます。 今日、明日の天気です。\n\nFrom 気象庁', filename = 'weather.png')
+api.update_status_with_media(status = 'おはようございます。 今日、明日の天気です。\n\nFrom 気象庁', filename = 'weather.png')
