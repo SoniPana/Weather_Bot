@@ -66,9 +66,11 @@ time.sleep(1)
 # ブラウザ稼働終了
 driver.quit()
 
+api.update_status_with_media(status = 'テストです。\n\nFrom 気象庁', filename = 'image.png')
+
 # 画像トリミング
 im = Image.open('image.png')
 im.crop((20, 100, 840, 520)).save('weather.png', quality=95)
 #-----------------------------------------------------------------------------
 #画像付きツイート
-api.update_status_with_media(status = 'おはようございます。 今日、明日の天気です。\n\nFrom 気象庁', filename = 'weather.png')
+#api.update_status_with_media(status = 'おはようございます。 今日、明日の天気です。\n\nFrom 気象庁', filename = 'weather.png')
