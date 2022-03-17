@@ -2,7 +2,7 @@ import settings
 import requests
 import tweepy
 import time
-from PIL import Image
+#from PIL import Image
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -67,9 +67,10 @@ time.sleep(1)
 # ブラウザ稼働終了
 driver.quit()
 
+
 # 画像トリミング
-im = Image.open('image.png')
-im.crop((20, 100, 840, 520)).save('weather.png', quality=95)
+#im = Image.open('image.png')
+#im.crop((20, 100, 840, 520)).save('weather.png', quality=95)
 #-----------------------------------------------------------------------------
 #画像付きツイート
-api.update_status_with_media(status = '今日もお疲れ様でした。明日の天気です。\n\nFrom 気象庁', filename = 'weather.png')
+api.update_status_with_media(status = '今日もお疲れ様でした。明日の天気です。\n\nFrom 気象庁', filename = 'image.png')
